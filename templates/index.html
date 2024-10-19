@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>ONEWINNICH</h1>
+
+  <p>Welcome to <em>Bookmaker contora ONEWINNICH</em>, a Django free website.</p>
+
+  <p>Our calendar has the following record counts:</p>
+  <ul>
+    <li><strong>Competitions:</strong> {{ competitions }}</li>
+    <li><strong>Sports:</strong> {{ sports }}</li>
+    <li><strong>Stages:</strong> {{ stages }}</li>
+  </ul>
+
+{% endblock %}

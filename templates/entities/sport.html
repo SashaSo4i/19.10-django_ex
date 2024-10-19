@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Sport</h1>
+
+    {% if sport %}
+    <ul>
+      <a>Name: {{ sport.name }}</a><br>
+      <a>Description: {{ sport.description }}</a><br>
+    </ul>
+    {{stages}}
+    <h2>Предстоящие этапы по спорту:</h2>
+      <ul>
+        {% for stages in query_stages %}
+          {% for stage in stages %}
+            <li>
+              <a href="{% url 'stage'%}?id={{stage.id}}">{{ stage.name }}</a>. {{ stage.place }} <br>
+              {{ stage.stage_date }}
+            </li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+
+
+    {% else %}
+      <p>Sport not found..</p>
+    {% endif %}
+    
+{% endblock %}

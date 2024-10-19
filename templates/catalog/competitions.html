@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Competitions</h1>
+
+    {% if competitions_list %}
+    <ul>
+
+      {% for competition in competitions_list %}
+      <li>
+        <a href="{% url 'competition'%}?id={{competition.id}}">{{ competition.name }}</a> <br>
+        {{competition.competition_start}} {{competition.competition_end}}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no competitions for now..</p>
+    {% endif %}
+{% endblock %}
