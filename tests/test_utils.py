@@ -82,7 +82,7 @@ class UtilsTest(TestCase):
                 config.DAY_LAST,
             ),
             (config.YEAR_TWENTY_TWO, 9): date(
-                config.YEAR_TWENTY_TWO, 9, config.PRE_LAST_DAY
+                config.YEAR_TWENTY_TWO, 9, config.PRE_LAST_DAY,
             ),
         }
         for (year, month), days in tests.items():

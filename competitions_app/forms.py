@@ -192,7 +192,7 @@ class CardNumberField(dj_form.CharField):
                 "autocorrect": config.OFF,
                 "spellcheck": config.OFF,
                 "autocapitalize": config.OFF,
-            }
+            },
         )
         return attrs
 
@@ -253,7 +253,7 @@ class CardExpiryField(dj_form.DateField):
                 "autocorrect": config.OFF,
                 "spellcheck": config.OFF,
                 "autocapitalize": config.OFF,
-            }
+            },
         )
         return attrs
 
@@ -285,7 +285,7 @@ class SecurityCodeField(dj_form.CharField):
                 "autocorrect": config.OFF,
                 "spellcheck": config.OFF,
                 "autocapitalize": config.OFF,
-            }
+            },
         )
         return attrs
 

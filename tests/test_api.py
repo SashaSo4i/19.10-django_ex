@@ -31,7 +31,7 @@ def create_api_test(model, url, creation_attrs):
         def setUp(self) -> None:
             self.client = APIClient()
             self.user = User.objects.create(
-                username=TEST_USERNAME, password=config.TEST_PASSWORD
+                username=TEST_USERNAME, password=config.TEST_PASSWORD,
             )
             self.superuser = User.objects.create(
                 username=TEST_SUPERUSERNAME,
@@ -97,7 +97,7 @@ stage_attrs = {"name": "ghi", "stage_date": date(config.TEST_YEAR, 8, 4)}
 
 base_url = "/api/"
 CompetitionApiTest = create_api_test(
-    Competition, f"{base_url}competitions/", competition_attrs
+    Competition, f"{base_url}competitions/", competition_attrs,
 )
 SportApiTest = create_api_test(Sport, f"{base_url}sports/", sport_attrs)
 StageApiTest = create_api_test(Stage, f"{base_url}stages/", stage_attrs)

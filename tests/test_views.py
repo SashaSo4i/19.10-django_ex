@@ -1,4 +1,4 @@
-"""Module for testing views."""
+"""Moduel for testing views."""
 
 from datetime import date
 
@@ -72,7 +72,7 @@ def create_redirect_page_test(page_name):
         self.client.logout()
 
         self.assertEqual(
-            self.client.get(reverse(page_name)).status_code, status.HTTP_302_FOUND
+            self.client.get(reverse(page_name)).status_code, status.HTTP_302_FOUND,
         )
 
     return test

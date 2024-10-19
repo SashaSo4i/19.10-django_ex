@@ -102,7 +102,7 @@ class CardNumberTest(TestCase):
         form = CardNumber(
             {
                 config.NUMBER: "30569309025904",
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data[config.NUMBER], "30569309025904")
@@ -112,7 +112,7 @@ class CardNumberTest(TestCase):
         form = CardNumber(
             {
                 config.NUMBER: "4111 1111 1111 1111",
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data[config.NUMBER], "4111111111111111")
@@ -122,7 +122,7 @@ class CardNumberTest(TestCase):
         form = CardNumber(
             {
                 config.NUMBER: "3782-8224631-0005",
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data[config.NUMBER], "378282246310005")
@@ -132,7 +132,7 @@ class CardNumberTest(TestCase):
         form = CardNumber(
             {
                 config.NUMBER: "4532-2616-1547-6013542",
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data[config.NUMBER], "4532261615476013542")
@@ -142,7 +142,7 @@ class CardNumberTest(TestCase):
         form = CardNumber(
             {
                 config.NUMBER: "4111 1111 112",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         number_error = form.errors[config.NUMBER]
@@ -153,7 +153,7 @@ class CardNumberTest(TestCase):
         form = CardNumber(
             {
                 config.NUMBER: "4111 1111 1111 1111 1115",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         number_error = form.errors[config.NUMBER]
@@ -164,7 +164,7 @@ class CardNumberTest(TestCase):
         form = CardNumber(
             {
                 config.NUMBER: "4111-1111-1111-1110",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         number_error = form.errors[config.NUMBER]
@@ -183,7 +183,7 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: "2018-11-10",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         expiry_error = form.errors[config.EXPIRY]
@@ -194,12 +194,12 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: "07/30",
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         expiry_error = form.cleaned_data[config.EXPIRY]
         self.assertEqual(
-            expiry_error, datetime.date(config.YEAR_THITRY, 7, config.DAY_LAST)
+            expiry_error, datetime.date(config.YEAR_THITRY, 7, config.DAY_LAST),
         )
 
     def test_invalid_short_string(self):
@@ -207,7 +207,7 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: "13/18",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         expiry_error = form.errors[config.EXPIRY]
@@ -218,7 +218,7 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: "01/2025",
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         expiry_error = form.cleaned_data[config.EXPIRY]
@@ -236,7 +236,7 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: "01/200",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         expiry_error = form.errors[config.EXPIRY]
@@ -247,7 +247,7 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: datetime.date(config.YEAR_THITRY, config.ELEVEN, 5),
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         expiry_error = form.cleaned_data[config.EXPIRY]
@@ -265,7 +265,7 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: "10/09",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         expiry_error = form.errors[config.EXPIRY]
@@ -274,7 +274,7 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: "06/1988",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         expiry_error = form.errors[config.EXPIRY]
@@ -283,9 +283,9 @@ class CardExpiryTest(TestCase):
         form = CardExpiry(
             {
                 config.EXPIRY: datetime.date(
-                    config.YEAR_TWENTY_TWELVE, config.ELEVEN, 8
+                    config.YEAR_TWENTY_TWELVE, config.ELEVEN, 8,
                 ),
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         expiry_error = form.errors[config.EXPIRY]
@@ -303,7 +303,7 @@ class CardExpiryTest(TestCase):
                     config.FIFTY_NINE,
                     config.FIFTY_NINE,
                 ),
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         expiry_error = form.cleaned_data[config.EXPIRY]
@@ -329,7 +329,7 @@ class CardCodeTest(TestCase):
         form = CardCode(
             {
                 config.CODE: "111",
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data[config.CODE], "111")
@@ -339,7 +339,7 @@ class CardCodeTest(TestCase):
         form = CardCode(
             {
                 config.CODE: "1111",
-            }
+            },
         )
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data[config.CODE], "1111")
@@ -349,7 +349,7 @@ class CardCodeTest(TestCase):
         form = CardCode(
             {
                 config.CODE: "abc",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         code_errors = form.errors[config.CODE]
@@ -360,7 +360,7 @@ class CardCodeTest(TestCase):
         form = CardCode(
             {
                 config.CODE: "66",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         code_errors = form.errors[config.CODE]
@@ -371,7 +371,7 @@ class CardCodeTest(TestCase):
         form = CardCode(
             {
                 config.CODE: "66666",
-            }
+            },
         )
         self.assertFalse(form.is_valid())
         code_errors = form.errors[config.CODE]

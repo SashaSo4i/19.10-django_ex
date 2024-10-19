@@ -77,7 +77,7 @@ def create_list_view(model_class, plural_name, template):
 
 
 competition_list_view = create_list_view(
-    Competition, "competitions", "catalog/competitions.html"
+    Competition, "competitions", "catalog/competitions.html",
 )
 sport_list_view = create_list_view(Sport, "sports", "catalog/sports.html")
 stage_list_view = create_list_view(Stage, config.STAGES, "catalog/stages.html")

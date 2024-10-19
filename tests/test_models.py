@@ -45,7 +45,7 @@ def create_model_tests(model_class, creation_attrs):
 
 
 CompetitionModelTest = create_model_tests(
-    models.Competition, valid_attrs.get("competition")
+    models.Competition, valid_attrs.get("competition"),
 )
 SportModelTest = create_model_tests(models.Sport, valid_attrs.get("sport"))
 StageModelTest = create_model_tests(models.Stage, valid_attrs.get("stage"))
@@ -80,7 +80,7 @@ class TestLinks(TestCase):
     def test_competitionssports(self):
         """Test competitions sports link."""
         competition = models.Competition.objects.create(
-            **valid_attrs.get("competition")
+            **valid_attrs.get("competition"),
         )
         sport = models.Sport.objects.create(**valid_attrs.get("sport"))
         competition.sports.add(sport)
@@ -99,7 +99,7 @@ class TestLinks(TestCase):
         client.stages.add(stage)
         client.save()
         stageclient_link = models.StageClient.objects.filter(
-            stages=stage, client=client
+            stages=stage, client=client,
         )
         self.assertEqual(len(stageclient_link), 1)
 

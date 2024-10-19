@@ -26,7 +26,7 @@ class PostgresSchemaRunner(DiscoverRunner):
     """
 
     def setup_databases(
-        self, **kwargs: Any
+        self, **kwargs: Any,
     ) -> list[tuple[BaseDatabaseWrapper, str, bool]]:
         """Set up database connection.
 

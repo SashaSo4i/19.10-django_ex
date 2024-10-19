@@ -108,7 +108,10 @@ class NameMixin(models.Model):
     """
 
     name = models.TextField(
-        _(NAME), null=False, blank=False, max_length=MAX_LENGTH_NAME
+        _(NAME),
+        null=False,
+        blank=False,
+        max_length=MAX_LENGTH_NAME,
     )
 
     class Meta:
@@ -288,10 +291,16 @@ class Stage(UUIDMixin, NameMixin, CreatedMixin, ModifiedMixin):
     """
 
     stage_date = models.DateField(
-        _("stage_date"), null=False, blank=False, default=get_datetime
+        _("stage_date"),
+        null=False,
+        blank=False,
+        default=get_datetime,
     )
     place = models.TextField(
-        _("place"), null=True, blank=True, max_length=MAX_LENGTH_PLACE
+        _("place"),
+        null=True,
+        blank=True,
+        max_length=MAX_LENGTH_PLACE,
     )
 
     bet_coefficient = models.DecimalField(
@@ -324,9 +333,6 @@ class Stage(UUIDMixin, NameMixin, CreatedMixin, ModifiedMixin):
         """
         return f"{self.name}: {self.place}({self.stage_date})."
 
-    from django.core.exceptions import ValidationError
-    from django.utils.translation import gettext_lazy as _
-
     def clean(self) -> None:
         """Validate bypassing API validation.
 
@@ -341,10 +347,10 @@ class Stage(UUIDMixin, NameMixin, CreatedMixin, ModifiedMixin):
         if not self.comp_sport:
             raise ValidationError(_("Competition-Sport relationship must be defined."))
 
-        # Verification of the dates of the implementation of the stage relative to the start and end of the competition
+        # Verify date of the implement of the stage relative to start and end of the competition
         if self.stage_date < self.comp_sport.competition_id.competition_start:
             raise ValidationError(
-                _("Stage cannot be held before the competition start.")
+                _("Stage cannot be held before the competition start."),
             )
         if self.stage_date > self.comp_sport.competition_id.competition_end:
             raise ValidationError(_("Stage cannot be held after the competition end."))
@@ -428,7 +434,9 @@ class Client(UUIDMixin, CreatedMixin, ModifiedMixin):
     )
     token = models.CharField(max_length=100, blank=True)
     stages = models.ManyToManyField(
-        Stage, through="StageClient", verbose_name=_("stages")
+        Stage,
+        through="StageClient",
+        verbose_name=_("stages"),
     )
 
     class Meta:
@@ -487,7 +495,9 @@ class StageClient(UUIDMixin, CreatedMixin, ModifiedMixin):
 
     stages = models.ForeignKey(Stage, verbose_name=_("stage"), on_delete=models.CASCADE)
     client = models.ForeignKey(
-        Client, verbose_name=_("client"), on_delete=models.CASCADE
+        Client,
+        verbose_name=_("client"),
+        on_delete=models.CASCADE,
     )
 
     class Meta:
